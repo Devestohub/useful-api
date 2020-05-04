@@ -72,13 +72,13 @@ class User {
 	 */
 
 	start(uname, lang, error) {
-		if (!this.getPlayer(this.uname).value()) {
-			this.players.set(this.uname, this.user_id).write()
+		if (!this.getPlayer(this.user_name).value()) {
+			this.players.set(this.user_name, this.user_id).write()
 			this.user.set('uname', uname).write();
 		} else {
 			return error = true;
 		}
-		if (!this.getUserInfo('rol') || this.getUserInfo('rol') == "NonPlayer") this.user.set('rol', "Player").write();
+		if (!this.getUserInfo('info.rol') || this.getUserInfo('info.rol') == "NonPlayer") this.user.set('rol', "Player").write();
 		if (!this.getUserInfo('level')) this.user.set('level', 0).write();
 		if (lang) this.user.set('lang', lang).write();
 	}
