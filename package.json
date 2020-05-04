@@ -7,7 +7,8 @@
   "license": "ISC",
   "dependencies": {
     "i18n": "^0.9.1",
-    "lowdb": "^1.0.0"
+    "lowdb": "^1.0.0",
+    "nvm": "0.0.4"
   },
   "devDependencies": {},
   "repository": {
