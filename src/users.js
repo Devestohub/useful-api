@@ -16,13 +16,17 @@ class User {
 		this.user = low(new FileSync(`./src/database/users/${this.user_id}.json`));
 	}
 
+	defaultDB() {
+		return this.user.defaults({ info: {} }).write();
+	}
+
 	/**
 	 * Connects to the database.
 	 * @returns {void}
 	 */
 
 	async connectDB() {
-		await this.user.defaults({ info: {} }).write();
+		await this.defaultDB();
 		this.user.set('info.id', this.user_id).write();
 		this.user.set('info.dname', this.user_name).write();
 		this.user.set('info.rol', "NonPlayer").write();
