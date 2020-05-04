@@ -21,13 +21,13 @@ class User {
 	 * @returns {void}
 	 */
 
-	async connectDB() {
-		await this.user.defaults({ info: {} }).write();
-		await this.user.set('info.id', this.user_id).write();
-		await this.user.set('info.dname', this.user_name).write();
-		await this.user.set('info.rol', "NonPlayer").write();
-		await this.user.set('info.lang', "es").write();
-		await this.user.set('info.avatarurl', this.user_avatarurl).write();
+	connectDB() {
+		this.setUserInfo('info.id', this.user_id)
+		this.setUserInfo('info.id', this.user_id)
+		this.setUserInfo('info.dname', this.user_name)
+		this.setUserInfo('info.rol', "NonPlayer")
+		this.setUserInfo('info.lang', "es")
+		this.setUserInfo('info.avatarurl', this.user_avatarurl)
 	}
 
 	getPlayer(name) {
@@ -60,7 +60,8 @@ class User {
 		return this.user.get(param).value()
 	}
 
-	setUserInfo(params) {
+	async setUserInfo(params) {
+		await this.user.defaults({ info: {} }).write();
 		return this.user.set(params[0], params[1]).write()
 	}
 
