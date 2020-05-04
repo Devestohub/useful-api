@@ -10,15 +10,6 @@ jobs:
     # Setup .npmrc file to publish to npm
     - uses: actions/setup-node@v1
       with:
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@hugovidafe'
-    # Publish to GitHub Packages
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
-      # Setup .npmrc file to publish to GitHub Packages
-    - uses: actions/setup-node@v1
-      with:
         node-version: '10.x'
         registry-url: 'https://registry.npmjs.org'
     - run: npm install
@@ -26,3 +17,12 @@ jobs:
     - run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    # Setup .npmrc file to publish to GitHub Packages
+    - uses: actions/setup-node@v1
+      with:
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@hugovidafe' # Defaults to the user or organization that owns the workflow file
+    # Publish to GitHub Packages
+    - run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

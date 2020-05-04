@@ -11,14 +11,11 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hugovidafe/hugovidafe-db.git"
+    "url": "git+https://github.com/hugovidafe/hugovidafe-db.git"
   },
   "bugs": {
-    "url": "https://github.com/Hugovidafe/hugovidafe-db/issues"
+    "url": "https://github.com/hugovidafe/hugovidafe-db/issues"
   },
-  "homepage": "https://github.com/Hugovidafe/hugovidafe-db#readme",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
+  "homepage": "https://github.com/hugovidafe/hugovidafe-db#readme",
   "description": ""
 }
