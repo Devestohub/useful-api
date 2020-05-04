@@ -41,10 +41,6 @@ class User {
 		return low(new FileSync(`./src/database/users/${this.getPlayer(name)}.json`)).get(param).value()
 	}
 
-	setPlayerInfo(name, param) {
-		return low(new FileSync(`./src/database/users/${this.getPlayer(name)}.json`)).set(param).write()
-	}
-
 	/**
 	 * Get the set value of the database user.
 	 * @param {string} param Set a set value to return
@@ -72,15 +68,15 @@ class User {
 	 */
 
 	start(uname, lang, error) {
-		if (!this.getPlayer(this.user_name).value()) {
-			this.players.set(this.user_name, this.user_id).write()
-			this.user.set('uname', uname).write();
+		if (!this.getPlayer(this.user_name)) {
+			this.setPlayer(this.user_name, this.user_id);
+			this.setUserInfo('uname', uname);
 		} else {
 			return error = true;
 		}
-		if (!this.getUserInfo('info.rol') || this.getUserInfo('info.rol') == "NonPlayer") this.user.set('rol', "Player").write();
-		if (!this.getUserInfo('level')) this.user.set('level', 0).write();
-		if (lang) this.user.set('lang', lang).write();
+		if (!this.getUserInfo('info.rol') || this.getUserInfo('info.rol') == "NonPlayer") this.setUserInfo('rol', "Player");
+		if (!this.getUserInfo('level')) this.setUserInfo('level', 0);
+		if (lang) this.setUserInfo('lang', lang);
 	}
 }
 

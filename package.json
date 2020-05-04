@@ -1,6 +1,6 @@
 {
   "name": "@hugovidafe/hugovidafe-db",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "main": "src/index.js",
   "author": "Hugovidafe",
   "license": "ISC",
