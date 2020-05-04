@@ -23,7 +23,6 @@ class User {
 
 	connectDB() {
 		this.setUserInfo('info.id', this.user_id)
-		this.setUserInfo('info.id', this.user_id)
 		this.setUserInfo('info.dname', this.user_name)
 		this.setUserInfo('info.rol', "NonPlayer")
 		this.setUserInfo('info.lang', "es")
