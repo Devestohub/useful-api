@@ -1,7 +1,7 @@
 {
   "name": "@hugovidafe/hugovidafe-db",
-  "version": "1.0.8",
-  "main": "index.js",
+  "version": "1.0.9",
+  "main": "src/index.js",
   "author": "Hugovidafe",
   "license": "ISC",
   "dependencies": {
