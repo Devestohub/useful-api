@@ -1,6 +1,6 @@
 {
-  "name": "hugovidafe-db",
-  "version": "1.0.2",
+  "name": "@hugovidafe/hugovidafe-db",
+  "version": "1.0.3",
   "main": "index.js",
   "author": "Hugovidafe",
   "license": "ISC",
@@ -17,5 +17,6 @@
     "url": "https://github.com/Hugovidafe/hugovidafe-db/issues"
   },
   "homepage": "https://github.com/Hugovidafe/hugovidafe-db#readme",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "description": ""
 }
