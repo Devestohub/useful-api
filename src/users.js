@@ -61,7 +61,7 @@ class User {
 
 	setUserInfo(param, value) {
 		this.user.defaults({ info: {} }).write();
-		return this.user.set(params, value).write()
+		return this.user.set(param, value).write()
 	}
 
 	/**
