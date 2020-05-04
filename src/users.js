@@ -24,8 +24,8 @@ class User {
 	connectDB() {
 		this.setUserInfo('info.id', this.user_id)
 		this.setUserInfo('info.dname', this.user_name)
-		this.setUserInfo('info.rol', "NonPlayer")
-		this.setUserInfo('info.lang', "es")
+		if (!this.getUserInfo('info.rol')) this.setUserInfo('info.rol', "NonPlayer")
+		if (!this.getUserInfo('info.lang')) this.setUserInfo('info.lang', "es")
 		this.setUserInfo('info.avatarurl', this.user_avatarurl)
 	}
 
