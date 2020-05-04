@@ -21,8 +21,9 @@ class User {
 	 * @returns {void}
 	 */
 
-	connectDB() {
-		this.user.defaults({ "info.id": this.user_id, "info.dname": this.user_name, "info.rol": "NonPlayer", "info.lang": "es", "info.avatarurl": this.user_avatarurl }).write()
+	async connectDB() {
+		await this.user.defaults({ info: {} }).write()
+		this.user.set ({ 'info.id': this.user_id, 'info.dname': this.user_name, 'info.rol': "NonPlayer", 'info.lang': "es", 'info.avatarurl': this.user_avatarurl }).write()
 	}
 
 	getPlayer(name) {
