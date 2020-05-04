@@ -23,11 +23,11 @@ class User {
 
 	async connectDB() {
 		await this.user.defaults({ info: {} }).write();
-		this.user.set('info.id', this.user_id).write();
-		this.user.set('info.dname', this.user_name).write();
-		this.user.set('info.rol', "NonPlayer").write();
-		this.user.set('info.lang', "es").write();
-		this.user.set('info.avatarurl', this.user_avatarurl).write();
+		await this.user.set('info.id', this.user_id).write();
+		await this.user.set('info.dname', this.user_name).write();
+		await this.user.set('info.rol', "NonPlayer").write();
+		await this.user.set('info.lang', "es").write();
+		await this.user.set('info.avatarurl', this.user_avatarurl).write();
 	}
 
 	getPlayer(name) {
