@@ -59,9 +59,9 @@ class User {
 		return this.user.get(param).value()
 	}
 
-	async setUserInfo(params) {
-		await this.user.defaults({ info: {} }).write();
-		return this.user.set(params[0], params[1]).write()
+	setUserInfo(param, value) {
+		this.user.defaults({ info: {} }).write();
+		return this.user.set(params, value).write()
 	}
 
 	/**
