@@ -22,7 +22,6 @@ class User {
 	 */
 
 	connectDB() {
-		if (!this.players.get(this.user_name).value()) this.players.set(this.user_name, this.user_id).write()
 		this.user.defaults({ id: this.user_id, dname: this.user_name, rol: "NonPlayer", lang: "es", avatarurl: this.user_avatarurl }).write()
 	}
 
@@ -30,8 +29,16 @@ class User {
 		return this.players.get(name).value()
 	}
 
+	setPlayer(name, id) {
+		return this.players.set(name, id).write()
+	}
+
 	getPlayerInfo(name, param) {
 		return low(new FileSync(`./src/database/users/${this.getPlayer(name)}.json`)).get(param).value()
+	}
+
+	setPlayerInfo(name, param) {
+		return low(new FileSync(`./src/database/users/${this.getPlayer(name)}.json`)).set(param).write()
 	}
 
 	/**
@@ -48,6 +55,10 @@ class User {
 		return this.user.get(param).value()
 	}
 
+	setUserInfo(params) {
+		return this.user.set(params[0], params[1]).write()
+	}
+
 	/**
 	 * Simplified code for a quick command
 	 * @param {string} uname In-game name
@@ -55,8 +66,13 @@ class User {
 	 * @returns {void} Nothing
 	 */
 
-	start(uname, lang) {
-		this.user.set('uname', uname).write();
+	start(uname, lang, error) {
+		if (!this.getPlayer(this.uname).value()) {
+			this.players.set(this.uname, this.user_id).write()
+			this.user.set('uname', uname).write();
+		} else {
+			return error = true;
+		}
 		if (!this.getUserInfo('rol') || this.getUserInfo('rol') == "NonPlayer") this.user.set('rol', "Player").write();
 		if (!this.getUserInfo('level')) this.user.set('level', 0).write();
 		if (lang) this.user.set('lang', lang).write();
