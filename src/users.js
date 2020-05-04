@@ -22,7 +22,7 @@ class User {
 	 */
 
 	connectDB() {
-		this.user.defaults({ id: this.user_id, dname: this.user_name, rol: "NonPlayer", lang: "es", avatarurl: this.user_avatarurl }).write()
+		this.user.defaults({ "info.id": this.user_id, "info.dname": this.user_name, "info.rol": "NonPlayer", "info.lang": "es", "info.avatarurl": this.user_avatarurl }).write()
 	}
 
 	getPlayer(name) {
