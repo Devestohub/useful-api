@@ -1,6 +1,5 @@
 {
   "name": "@hugovidafe/hugovidafe-db",
-  "private": false,
   "version": "1.0.7",
   "main": "index.js",
   "author": "Hugovidafe",
