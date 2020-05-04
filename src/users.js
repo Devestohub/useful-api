@@ -71,12 +71,12 @@ class User {
 		if (!this.getPlayer(this.user_name)) {
 			this.setPlayer(this.user_name, this.user_id);
 			this.setUserInfo('uname', uname);
+			if (!this.getUserInfo('info.rol') || this.getUserInfo('info.rol') == "NonPlayer") this.setUserInfo('info.rol', "Player");
+			if (!this.getUserInfo('level')) this.setUserInfo('level', 0);
+			if (lang) this.setUserInfo('info.lang', lang);
 		} else {
 			return error = true;
 		}
-		if (!this.getUserInfo('info.rol') || this.getUserInfo('info.rol') == "NonPlayer") this.setUserInfo('rol', "Player");
-		if (!this.getUserInfo('level')) this.setUserInfo('level', 0);
-		if (lang) this.setUserInfo('lang', lang);
 	}
 }
 
