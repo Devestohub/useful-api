@@ -47,6 +47,3 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/delete-package-versions@v1.0.1
-        with:
-          package-name: "hugovidafe-db"
