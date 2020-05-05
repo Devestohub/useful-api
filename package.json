@@ -1,12 +1,14 @@
 {
   "name": "@hugovidafe/hugovidafe-db",
-  "version": "1.1.0",
+  "description": "You can use this for ser an example of a database! THIS IS AN API FOR MY ANOTHER PROJECT.",
+  "version": "1.2.0",
   "main": "src/index.js",
   "author": "Hugovidafe",
   "license": "ISC",
   "dependencies": {
     "i18n": "^0.9.1",
-    "lowdb": "^1.0.0"
+    "lowdb": "^1.0.0",
+    "roles": "0.0.4"
   },
   "repository": {
     "type": "git",
@@ -15,6 +17,5 @@
   "bugs": {
     "url": "https://github.com/hugovidafe/hugovidafe-db/issues"
   },
-  "homepage": "https://github.com/hugovidafe/hugovidafe-db#readme",
-  "description": "You can use this for ser an example of a database! THIS IS AN API FOR MY ANOTHER PROJECT."
+  "homepage": "https://github.com/hugovidafe/hugovidafe-db#readme"
 }
