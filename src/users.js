@@ -16,19 +16,6 @@ class User {
 		this.user = low(new FileSync(`./src/database/users/${this.user_id}.json`));
 	}
 
-	/**
-	 * Connects to the database.
-	 * @returns {void}
-	 */
-
-	connectDB() {
-		this.setUserInfo('info.id', this.user_id)
-		this.setUserInfo('info.dname', this.user_name)
-		if (!this.getUserInfo('info.rol')) this.setUserInfo('info.rol', "NonPlayer")
-		if (!this.getUserInfo('info.lang')) this.setUserInfo('info.lang', "es")
-		this.setUserInfo('info.avatarurl', this.user_avatarurl)
-	}
-
 	getPlayer(name) {
 		return this.players.get(name).value()
 	}
@@ -58,25 +45,6 @@ class User {
 	setUserInfo(param, value) {
 		this.user.defaults({ info: {} }).write();
 		return this.user.set(param, value).write()
-	}
-
-	/**
-	 * Simplified code for a quick command
-	 * @param {string} uname In-game name
-	 * @param {string} lang Bot language
-	 * @returns {void} Nothing
-	 */
-
-	start(uname, lang, error) {
-		if (!this.getPlayer(this.user_name)) {
-			this.setPlayer(this.user_name, this.user_id);
-			this.setUserInfo('uname', uname);
-			if (!this.getUserInfo('info.rol') || this.getUserInfo('info.rol') == "NonPlayer") this.setUserInfo('info.rol', "Player");
-			if (!this.getUserInfo('level')) this.setUserInfo('level', 0);
-			if (lang) this.setUserInfo('info.lang', lang);
-		} else {
-			return error = true;
-		}
 	}
 }
 

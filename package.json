@@ -1,15 +1,12 @@
 {
   "name": "@hugovidafe/hugovidafe-db",
-  "version": "1.2.7",
+  "version": "1.0.0",
   "main": "src/index.js",
   "author": "Hugovidafe",
   "license": "ISC",
   "dependencies": {
     "i18n": "^0.9.1",
     "lowdb": "^1.0.0"
-  },
-  "devDependencies": {
-    "nvm": "0.0.4"
   },
   "repository": {
     "type": "git",
