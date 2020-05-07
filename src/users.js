@@ -86,6 +86,10 @@ class User {
 		this.user.defaults({ discord: {}, user: {} }).write();
 		return this.user.set(param, value).write()
 	}
+
+	unsetUserInfo(param) {
+		return this.user.unset(param).write()
+	}
 }
 
 module.exports = User;
