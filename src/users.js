@@ -87,6 +87,14 @@ class User {
 		return this.user.set(param, value).write()
 	}
 
+	/**
+	 * Unset the information about yourself.
+	 * @param {string} param Parameter to unconfigure itself
+	 * @returns {void}
+	 * @example
+	 * database.unsetUserInfo('lang', "English")
+	 */
+
 	unsetUserInfo(param) {
 		return this.user.unset(param).write()
 	}
