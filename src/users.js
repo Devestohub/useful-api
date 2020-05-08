@@ -98,6 +98,21 @@ class User {
 	unsetUserInfo(param) {
 		return this.user.unset(param).write()
 	}
+
+	/**
+	 * Encrypt the information about yourself.
+	 * @returns {string} Returns the information of oneself encrypted.
+	 * @example
+	 * database.encryptUserInfo()
+	 *   .then(param => console.log(`Your data encrypted: ${param}`)) // RESULT: Your data encrypted: "3e6627a6f6eg157an4h438d4gbs411h734k176b37dh62963ba3"
+	 *   .catch(console.error);
+	 */
+
+	encryptUserInfo() {
+		return new FileSync(`./src/database/users/${this.user_id}.json`, {
+			serialize: (data) => encrypt(JSON.stringify(data))
+		})
+	}
 }
 
 module.exports = User;
