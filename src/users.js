@@ -3,6 +3,9 @@
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
+const fs = require('fs')
+const je = require('json-encrypt')
+
 /**
  * Communication for users in the database.
  */
@@ -11,7 +14,8 @@ class User {
 	constructor(id) {
 		this.user_id = id;
 		this.players = low(new FileSync(`./src/database/users/users.json`));
-		this.user = low(new FileSync(`./src/database/users/${this.user_id}.json`));
+		this.file_user = `./src/database/users/${this.user_id}.json`;
+		this.low_user = low(new FileSync(this.file_user));
 	}
 
 
@@ -70,7 +74,7 @@ class User {
 	 */
 
 	getUserInfo(param) {
-		return this.user.get(param).value()
+		return this.low_user.get(param).value()
 	}
 
 	/**
@@ -83,8 +87,8 @@ class User {
 	 */
 
 	setUserInfo(param, value) {
-		this.user.defaults({ discord: {}, user: {} }).write();
-		return this.user.set(param, value).write()
+		this.low_user.defaults({ discord: {}, user: {} }).write();
+		return this.low_user.set(param, value).write()
 	}
 
 	/**
@@ -96,7 +100,7 @@ class User {
 	 */
 
 	unsetUserInfo(param) {
-		return this.user.unset(param).write()
+		return this.low_user.unset(param).write()
 	}
 
 	/**
@@ -109,9 +113,12 @@ class User {
 	 */
 
 	encryptUserInfo() {
-		return new FileSync(`./src/database/users/${this.user_id}.json`, {
-			serialize: (data) => encrypt(JSON.stringify(data))
-		})
+		try {
+			const data = fs.readFileSync(this.file_user)
+			return je.encrypt(data)
+		} catch (err) {
+			console.error(err)
+		}
 	}
 }
 

@@ -1,12 +1,14 @@
 {
   "name": "@hugovidafe/hugovidafe-db",
   "description": "You can use this for ser an example of a database! THIS IS AN API FOR MY ANOTHER PROJECT.",
-  "version": "4.6.0",
+  "version": "4.7.0",
   "main": "src/index.js",
   "author": "Hugovidafe",
   "license": "ISC",
   "dependencies": {
+    "fs": "0.0.1-security",
     "i18n": "^0.9.1",
+    "json-encrypt": "^2.1.1",
     "lowdb": "^1.0.0",
     "roles": "0.0.4"
   },
