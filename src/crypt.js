@@ -4,8 +4,8 @@ const crypto = require('crypto')
 
 /**
  * Easy encryption and decryption.
- * @param {string} algorithm
- * @param {string} pass
+ * @param {string} algorithm Algorithm to use at the encryptation.
+ * @param {string} pass Password for use at the encryptation.
  */
 
 class Crypt {

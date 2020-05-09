@@ -5,10 +5,11 @@ const FileSync = require('lowdb/adapters/FileSync')
 
 const fs = require('fs')
 
-const API = require('./index')
+const Crypt = require('./crypt')
 
 /**
  * Communication for users in the database.
+ * @param {number} id ID of the user.
  */
 
 class User {
@@ -106,16 +107,18 @@ class User {
 
 	/**
 	 * Encrypt the information about yourself.
+	 * @param {string} algorithm Algorithm to use at the encryptation.
+	 * @param {string} pass Password for use at the encryptation.
 	 * @returns {string} Returns the information of oneself encrypted.
 	 * @example
-	 * database.encryptUserInfo()
+	 * database.encryptUserInfo("aes-128", "ThisPasswordIsAww3s0m3")
 	 *   .then(param => console.log(`Your data encrypted: ${param}`)) // RESULT: Your data encrypted: "3e6627a6f6eg157an4h438d4gbs411h734k176b37dh62963ba3"
 	 *   .catch(console.error);
 	 */
 
 	encryptUserInfo(algorithm, pass) {
-		const crypt = new API.Crypt(algorithm, pass)
 		try {
+			const crypt = new Crypt(algorithm, pass)
 			const data = fs.readFileSync(this.file_user)
 			return crypt.encrypt(data)
 		} catch (err) {
