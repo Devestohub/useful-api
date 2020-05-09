@@ -114,9 +114,9 @@ class User {
 
 	encryptUserInfo() {
 		try {
-			const engine = encrypter('dJ2D$VJAlvGjEz5&99deDapUNWhCAy8oHKG&@MIort@#nmD*GW', { ttl: 1, algorithm: 'des-cfb1' })
+			const engine = encrypter('dJ2D$VJAlvGjEz5&99deDapUNWhCAy8oHKG&@MIort@#nmD*GW', { ttl: true, algorithm: 'des-cfb1' })
 			const data = fs.readFileSync(this.file_user)
-			return engine.encrypt(data)
+			return engine.encrypt(data, 1)
 		} catch (err) {
 			console.error(err)
 		}
