@@ -4,7 +4,7 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
 const fs = require('fs')
-const encrypter = require('object-encrypter')
+const je = require('json-encrypt')
 
 /**
  * Communication for users in the database.
@@ -114,9 +114,8 @@ class User {
 
 	encryptUserInfo() {
 		try {
-			const engine = encrypter('dJ2D$VJAlvGjEz5&99deDapUNWhCAy8oHKG&@MIort@#nmD*GW', { ttl: true, algorithm: 'des-cfb1' })
 			const data = fs.readFileSync(this.file_user)
-			return engine.encrypt(data, 1)
+			return je.encrypt(data)
 		} catch (err) {
 			console.error(err)
 		}
