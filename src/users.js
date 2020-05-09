@@ -4,7 +4,8 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
 const fs = require('fs')
-const je = require('json-encrypt')
+
+const API = require('./index')
 
 /**
  * Communication for users in the database.
@@ -112,10 +113,11 @@ class User {
 	 *   .catch(console.error);
 	 */
 
-	encryptUserInfo() {
+	encryptUserInfo(algorithm, pass) {
+		const crypt = new API.Crypt(algorithm, pass)
 		try {
 			const data = fs.readFileSync(this.file_user)
-			return je.encrypt(data)
+			return crypt.encrypt(data)
 		} catch (err) {
 			console.error(err)
 		}
