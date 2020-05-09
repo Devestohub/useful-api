@@ -3,7 +3,7 @@
 const crypto = require('crypto')
 
 /**
- * Communication for users in the database.
+ * Easy encryption and decryption.
  * @param {string} algorithm
  * @param {string} pass
  */
