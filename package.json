@@ -1,7 +1,7 @@
 {
   "name": "@hugovidafe/hugovidafe-db",
   "description": "You can use this for ser an example of a database! THIS IS AN API FOR MY ANOTHER PROJECT.",
-  "version": "4.9.1",
+  "version": "5.0.0",
   "main": "src/index.js",
   "author": "Hugovidafe",
   "license": "ISC",

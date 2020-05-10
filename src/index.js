@@ -1,9 +1,14 @@
 'use strict';
 
 module.exports = {
-    Crypt: require('./crypt'),
-    Langs: require('./langs'),
-    Roles: require('./roles'),
-    Users: require('./users'),
+    // "Root" classes
+    Users: require('./classes/users'),
+
+    // Configuration for other project; if you want, you can use it.
+    Langs: require('./config of the dependencies/langs'),
+    Roles: require('./config of the dependencies/roles'),
+
+    // Utilities
+    Crypt: require('./classes/crypt'),
     version: require('../package.json').version
 }

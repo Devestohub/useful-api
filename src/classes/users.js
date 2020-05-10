@@ -8,15 +8,21 @@ const fs = require('fs')
 const Crypt = require('./crypt')
 
 /**
- * Communication for users in the database.
+ * Database for users.
  * @param {number} id ID of the user.
+ * @param {string} path_db The path where is the database.
+ * 
+ * @author Created by Hugovidafe <hugo.vidal.ferre@gmail.com>
+ * @github https://github.com/Hugovidafe/hugovidafe-db 
+ * @license http://opensource.org/licenses/MIT
  */
 
 class User {
-	constructor(id) {
+	constructor(id, path_db) {
 		this.user_id = id;
-		this.players = low(new FileSync(`./src/database/users/users.json`));
-		this.file_user = `./src/database/users/${this.user_id}.json`;
+		this.path_database = path_db;
+		this.players = low(new FileSync(`${this.path_database}/users.json`));
+		this.file_user = `${this.path_database}/${this.user_id}.json`;
 		this.low_user = low(new FileSync(this.file_user));
 	}
 
@@ -61,7 +67,7 @@ class User {
 	 */
 
 	getPlayerInfo(name, param) {
-		return low(new FileSync(`./src/database/users/${this.getPlayer(name)}.json`)).get(param).value()
+		return low(new FileSync(`${this.path_database}/${this.getPlayer(name)}.json`)).get(param).value()
 	}
 
 
@@ -81,8 +87,8 @@ class User {
 
 	/**
 	 * Set the information about yourself.
-	 * @param {string} param Parameter to configure itself
-	 * @param {string} value Parameter value to configure itself
+	 * @param {string} param Parameter to configure itself.
+	 * @param {string} value Parameter value to configure itself.
 	 * @returns {void}
 	 * @example
 	 * database.setUserInfo('lang', "English")
@@ -95,7 +101,7 @@ class User {
 
 	/**
 	 * Unset the information about yourself.
-	 * @param {string} param Parameter to unconfigure itself
+	 * @param {string} param Parameter to unconfigure itself.
 	 * @returns {void}
 	 * @example
 	 * database.unsetUserInfo('lang', "English")
@@ -108,12 +114,8 @@ class User {
 	/**
 	 * Encrypt the information about yourself.
 	 * @param {string} algorithm Algorithm to use at the encryptation.
-	 * @param {string} pass Password for use at the encryptation.
+	 * @param {string} pass Password to use at the encryptation.
 	 * @returns {string} Returns the information of oneself encrypted.
-	 * @example
-	 * database.encryptUserInfo("aes-128", "ThisPasswordIsAww3s0m3")
-	 *   .then(param => console.log(`Your data encrypted: ${param}`)) // RESULT: Your data encrypted: "3e6627a6f6eg157an4h438d4gbs411h734k176b37dh62963ba3"
-	 *   .catch(console.error);
 	 */
 
 	encryptUserInfo(algorithm, pass) {
@@ -121,6 +123,23 @@ class User {
 			const crypt = new Crypt(algorithm, pass)
 			const data = fs.readFileSync(this.file_user)
 			return crypt.encrypt(data)
+		} catch (err) {
+			console.error(err)
+		}
+	}
+
+	/**
+	 * Decrypt the information about yourself.
+	 * @param {string} algorithm Algorithm used at the encryptation.
+	 * @param {string} pass Password used at the encryptation.
+	 * @param {string} encrypted The data encrypted to decrypt.
+	 * @returns {object} Returns the information of oneself decrypted.
+	 */
+
+	decryptUserInfo(algorithm, pass, encrypted) {
+		try {
+			const crypt = new Crypt(algorithm, pass)
+			return crypt.encrypt(encrypted)
 		} catch (err) {
 			console.error(err)
 		}
