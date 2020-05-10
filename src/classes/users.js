@@ -144,6 +144,16 @@ class User {
 			console.error(err)
 		}
 	}
+
+	/**
+	 * Clone or backup the data of oneself.
+	 * @param {string} dest_path Where goes to clone or backup.
+	 * @returns {void}
+	 */
+
+	cloneUserInfo(dest_path) {
+		return fs.copyFileSync(this.file_user, dest_path);
+	}
 }
 
 module.exports = User;
