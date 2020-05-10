@@ -5,7 +5,7 @@ const FileSync = require('lowdb/adapters/FileSync')
 
 const fs = require('fs')
 
-const Crypt = require('./crypt')
+const Crypt = require('@hugovidafe/crypt')
 
 /**
  * Database for users.

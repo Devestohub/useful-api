@@ -9,6 +9,5 @@ module.exports = {
     Roles: require('./config of the dependencies/roles'),
 
     // Utilities
-    Crypt: require('./classes/crypt'),
     version: require('../package.json').version
 }

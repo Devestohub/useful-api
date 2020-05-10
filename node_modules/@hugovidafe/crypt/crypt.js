@@ -5,7 +5,7 @@ const crypto = require('crypto')
 /**
  * Easy encryption and decryption.
  * @param {string} algorithm Algorithm to use at the encryptation.
- * @param {string} pass Password for use at the encryptation.
+ * @param {string} password Password for use at the encryptation.
  * 
  * @author Created by arsandev (Upgraded by Hugovidafe)
  * @copyright https://www.npmjs.com/package/json-encrypt
@@ -13,9 +13,9 @@ const crypto = require('crypto')
  */
 
 class Crypt {
-	constructor(algorithm, pass) {
+	constructor(algorithm, password) {
 		this.algorithm = algorithm;
-		this.password = pass;
+		this.password = password;
 	}
 
 	/**
