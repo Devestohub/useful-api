@@ -4,6 +4,7 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
 const fs = require('fs')
+const path = require('path')
 
 const Crypt = require('@hugovidafe/crypt')
 
@@ -152,7 +153,7 @@ class User {
 	 */
 
 	cloneUserInfo(dest_path) {
-		return fs.copyFileSync(this.file_user, dest_path);
+		return fs.copyFileSync(this.file_user, dest_path + this.user_id + path.extname(this.file_user));
 	}
 }
 
