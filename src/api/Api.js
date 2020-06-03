@@ -1,7 +1,13 @@
+/*
+Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
+(c) 2020 TheMorFun
+Created:  2020-06-03T13:55:44.904Z
+Modified: 2020-06-03T20:50:59.234Z
+*/
+
 'use strict';
 
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
+const { database } = require('../util/Util')
 
 const fs = require('fs')
 const path = require('path')
@@ -18,13 +24,19 @@ const Crypt = require('@hugovidafe/crypt')
  * @license http://opensource.org/licenses/MIT
  */
 
-class User {
-	constructor(id, path_db) {
-		this.user_id = id;
-		this.path_database = path_db;
-		this.players = low(new FileSync(`${this.path_database}/users.json`));
+const BaseApi = require('./BaseApi')
+
+class Api extends BaseApi {
+	/**
+	 * @param {ApiOptions} [options] Options for the API.
+	 */
+	constructor(options = {}) {
+		super(Object.assign({ _apiVersion: "2" }, options));
+		this.user_id = this.options.id;
+		this.path_database = this.options.path_db;
+		this.players = database(`${this.path_database}/users.json`);
 		this.file_user = `${this.path_database}/${this.user_id}.json`;
-		this.low_user = low(new FileSync(this.file_user));
+		this.low_user = database(this.file_user);
 	}
 
 
@@ -68,9 +80,8 @@ class User {
 	 */
 
 	getPlayerInfo(name, param) {
-		return low(new FileSync(`${this.path_database}/${this.getPlayer(name)}.json`)).get(param).value()
+		return database(`${this.path_database}/${this.getPlayer(name)}.json`).get(param).value()
 	}
-
 
 	/**
 	 * Get the information about yourself.
@@ -157,4 +168,4 @@ class User {
 	}
 }
 
-module.exports = User;
+module.exports = Api;
