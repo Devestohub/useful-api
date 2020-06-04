@@ -1,3 +1,10 @@
+/*
+Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
+(c) 2020 TheMorFun
+Created:  2020-06-03T14:37:35.559Z
+Modified: 2020-06-04T11:21:04.684Z
+*/
+
 'use strict';
 
 const Util = require('./util/Util');

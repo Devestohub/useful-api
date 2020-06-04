@@ -2,7 +2,7 @@
 Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 (c) 2020 TheMorFun
 Created:  2020-06-03T14:38:32.556Z
-Modified: 2020-06-03T15:00:03.219Z
+Modified: 2020-06-04T14:56:02.328Z
 */
 
 'use strict';
@@ -11,8 +11,8 @@ Modified: 2020-06-03T15:00:03.219Z
  * Options for the API.
  * @typedef {Object} ApiOptions
  * @property {number|number[]|string} id ID of the account
- * @property {string} [path_db] The path of the database
- * @property {string} [path_backup_db] The path to backup the database
+ * @property {PathLike} [path_db] The path of the database
+ * @property {PathLike} [path_backup_db] The path to backup the database
  */
 
 exports.DefaultOptions = {
