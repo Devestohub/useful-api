@@ -1,24 +1,65 @@
 /*
 Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
-(c) 2020 TheMorFun
-Created:  2020-06-03T14:19:15.059Z
-Modified: 2020-06-03T15:04:52.140Z
+USEFUL API (c) 2020
+Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
+Created: 2020-06-05T09:40:19.887Z
+Modified: 2020-06-06T23:17:40.446Z
 */
 
 'use strict';
 
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-
 const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+const isObject = d => typeof d === 'object' && d !== null;
+
+/**
+ * Contains various general-purpose utility methods.
+ */
 
 class Util {
     constructor() {
         throw new Error(`The ${this.constructor.name} class may not be instantiated.`)
     }
+
+    /**
+     * Flatten an object. Any properties that are collections will get converted to an array of keys.
+     * @param {Object} obj The object to flatten.
+     * @param {...Object<string, boolean|string>} [props] Specific properties to include/exclude.
+     * @returns {Object}
+     */
+
+    static flatten(obj, ...props) {
+        if (!isObject(obj)) return obj;
     
-    static database(file) {
-        return low(new FileSync(file))
+        props = Object.assign(
+            ...Object.keys(obj)
+                .filter(k => !k.startsWith('_'))
+                .map(k => ({ [k]: true })),
+            ...props,
+        );
+    
+        const out = {};
+    
+        for (let [prop, newProp] of Object.entries(props)) {
+            if (!newProp) continue;
+            newProp = newProp === true ? prop : newProp;
+        
+            const element = obj[prop];
+            const elemIsObj = isObject(element);
+            const valueOf = elemIsObj && typeof element.valueOf === 'function' ? element.valueOf() : null;
+        
+            // If it's a Collection, make the array of keys
+            if (element instanceof require('./Collection')) out[newProp] = Array.from(element.keys());
+            // If the valueOf is a Collection, use its array of keys
+            else if (valueOf instanceof require('./Collection')) out[newProp] = Array.from(valueOf.keys());
+            // If it's an array, flatten each element
+            else if (Array.isArray(element)) out[newProp] = element.map(e => Util.flatten(e));
+            // If it's an object with a primitive `valueOf`, use that value
+            else if (typeof valueOf !== 'object') out[newProp] = valueOf;
+            // If it's a primitive
+            else if (!elemIsObj) out[newProp] = element;
+        }
+    
+        return out;
     }
 
     /**

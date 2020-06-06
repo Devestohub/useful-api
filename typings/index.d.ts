@@ -2,10 +2,10 @@
 Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 (c) 2020 TheMorFun
 Created:  2020-06-04T12:25:53.305Z
-Modified: 2020-06-04T14:10:46.119Z
+Modified: 2020-06-06T23:19:30.874Z
 */
 
-declare module '@hugovidafe/hugovidafe-db' {
+declare module '@hugovidafe/useful-api' {
 
     import { PathLike } from "fs";
 
@@ -13,13 +13,16 @@ declare module '@hugovidafe/hugovidafe-db' {
 
     //#region Classes
     export class BaseApi {
-        constructor(options: ApiOptions);
+        constructor(options?: ApiOptions);
         
         public options: ApiOptions;
     }
     
     export class Api extends BaseApi {
-        constructor(options: ApiOptions);
+        constructor(options?: ApiOptions);
+
+        public database: Database;
+        public langs: Langs;
     }
 
     export const Constants: {
@@ -45,14 +48,18 @@ declare module '@hugovidafe/hugovidafe-db' {
         DefaultOptions: ApiOptions;
     }
 
+    export class Util {
+        public static flatten(obj: object, ...props: { [key: string]: boolean | string }[]): object;
+        public static mergeDefault(def: object, given: object): object;
+    }
+
     //#endregion
 
     //#region Typedefs
 
     interface ApiOptions {
-        id: number | number[];
-        path_db?: PathLike;
-        path_backup_db?: PathLike;
+        file_db?: PathLike;
+        path_langs?: PathLike;
     }
 
     //#endregion

@@ -1,56 +1,64 @@
 /*
 Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
-(c) 2020 TheMorFun
-Created:  2020-06-03T13:55:44.904Z
-Modified: 2020-06-04T14:55:30.941Z
+USEFUL API (c) 2020
+Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
+Created: 2020-06-05T09:40:19.887Z
+Modified: 2020-06-06T22:42:37.869Z
 */
 
 'use strict';
 
 const BaseApi = require('./BaseApi')
-
-const UserManager = require('../managers/users')
+const Database = require('../database/Database');
+const Langs = require('i18n');
 
 /**
- * Database for users.
+ * The main hub for interating with the API, and the starting point for any database and much.
  * @extends {BaseApi}
  * 
  * @author Created by Hugovidafe <hugo.vidal.ferre@gmail.com>
- * @github https://github.com/Hugovidafe/hugovidafe-db 
+ * @github https://github.com/Hugovidafe/useful-api 
  * @license http://opensource.org/licenses/MIT
  */
 
 class Api extends BaseApi {
 	/**
-	 * @param {ApiOptions} options Options for the API.
+	 * @param {ApiOptions} [options] Options for the API.
 	 */
 	constructor(options = {}) {
-		super(Object.assign({ _apiVersion: "2" }, options));
-		
-		this.users = new UserManager(this);
+		super(Object.assign({ _apiVersion: "1" }, options));
+
+		// this._validateOptions();
 
 		/**
-		 * Time at which the api was last regarded as being in the `READY` state
-		 * (each time the api disconnects and successfully reconnects, this will be overwritten)
-		 * @type {?Date}
+		 * Initiate a instance of Database.
+		 * @type {Database}
 		 */
-		this.readyAt = null;
+
+		this.database = new Database(this);
+
+		Langs.configure({
+            directory: this.options.path_langs,
+            syncFiles: true,
+            updateFiles: true,
+            autoReload: true
+		})
+
+		/**
+		 * Initiate a instance of translations.
+		 * @type {Langs}
+		 */
+
+		this.langs = Langs;
 	}
 
 	/**
-	 * How long it has been since the client last entered the `READY` state in milliseconds
-	 * @type {?number}
-	 * @readonly
+	 * Validates the api options.
+	 * @param {ApiOptions} [options=this.options] Options to validate.
+	 * @private
 	 */
 
-	get uptime() {
-		return this.readyAt ? Date.now() - this.readyAt : null;
-	}
-
 	// _validateOptions(options = this.options) {
-	// 	if (typeof options.id !== 'number' || isNaN(options.id)) {
-	// 		throw new TypeError('API_INVALID_OPTION', 'id', '...');
-	// 	}
 	// 	if (options.path_db && !(typeof options.path_db === "string")) {
 	// 		throw new TypeError('API_INVALID_OPTION', 'path_db', '...');
 	// 	}

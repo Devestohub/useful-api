@@ -1,7 +1,7 @@
 {
-  "name": "@hugovidafe/hugovidafe-db",
-  "description": "You can use this for ser an example of a database! THIS IS AN API FOR MY ANOTHER PROJECT.",
-  "version": "6.1.0",
+  "name": "@hugovidafe/useful-api",
+  "description": "THIS PACKAGE IS UNDER DEVELOPMENT!",
+  "version": "0.1.0",
   "main": "src/index.js",
   "author": "Hugovidafe",
   "license": "MIT",
@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hugovidafe/hugovidafe-db.git"
+    "url": "git+https://github.com/Hugovidafe/useful-api.git"
   },
   "bugs": {
-    "url": "https://github.com/hugovidafe/hugovidafe-db/issues"
+    "url": "https://github.com/Hugovidafe/useful-api/issues"
   },
-  "homepage": "https://github.com/hugovidafe/hugovidafe-db#readme",
+  "homepage": "https://github.com/Hugovidafe/useful-api#readme",
   "devDependencies": {
     "typescript": "^3.9.3"
   },
