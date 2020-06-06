@@ -1,8 +1,9 @@
 /*
 Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
-(c) 2020 TheMorFun
-Created:  2020-06-03T14:38:32.556Z
-Modified: 2020-06-04T14:56:02.328Z
+USEFUL API (c) 2020
+Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
+Created: 2020-06-05T09:40:19.887Z
+Modified: 2020-06-06T21:22:47.597Z
 */
 
 'use strict';
@@ -10,13 +11,11 @@ Modified: 2020-06-04T14:56:02.328Z
 /**
  * Options for the API.
  * @typedef {Object} ApiOptions
- * @property {number|number[]|string} id ID of the account
- * @property {PathLike} [path_db] The path of the database
- * @property {PathLike} [path_backup_db] The path to backup the database
+ * @property {PathLike} [file_db] The file for use of database.
+ * @property {PathLike} [path_langs] Where is the directory of the translations?
  */
 
 exports.DefaultOptions = {
-    id: null,
-    path_db: './src/database',
-    path_backup_db: './src/backup_database',
+    file_db: './database.json',
+    path_langs: './i18n'
 }

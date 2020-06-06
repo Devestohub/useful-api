@@ -1,1 +1,1 @@
-# DB for my game, you can use this for see an example of a database!
+# THIS PACKAGE IS UNDER DEVELOPMENT!

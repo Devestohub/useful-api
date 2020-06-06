@@ -1,3 +1,11 @@
+/*
+Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
+USEFUL API (c) 2020
+Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
+Created: 2020-06-05T09:40:19.887Z
+Modified: 2020-06-05T09:43:32.050Z
+*/
+
 'use strict';
 
 const roles = require('roles');
