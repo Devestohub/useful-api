@@ -2,7 +2,7 @@
 Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 (c) 2020 TheMorFun
 Created:  2020-06-04T12:25:53.305Z
-Modified: 2020-06-07T08:18:55.404Z
+Modified: 2020-06-07T09:02:38.739Z
 */
 
 declare module '@hugovidafe/useful-api' {
@@ -20,6 +20,7 @@ declare module '@hugovidafe/useful-api' {
     
     export class Api extends BaseApi {
         constructor(options?: ApiOptions);
+        private _validateOptions(options?: ApiOptions): void;
 
         public database: Database;
         public langs: i18nAPI;
