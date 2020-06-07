@@ -3,7 +3,7 @@ Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 USEFUL API (c) 2020
 Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
 Created: 2020-06-05T09:40:19.887Z
-Modified: 2020-06-06T22:48:44.075Z
+Modified: 2020-06-07T08:12:57.976Z
 */
 
 'use strict';
@@ -16,7 +16,6 @@ module.exports = {
 
     // Utilities
     Constants: require('./util/Constants'),
-    Roles: require('./roles'), // TODO: To reconstruct!
     Util: Util,
     version: require('../package.json').version,
 }

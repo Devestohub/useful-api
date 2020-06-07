@@ -3,7 +3,7 @@ Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 USEFUL API (c) 2020
 Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
 Created: 2020-06-05T09:40:19.887Z
-Modified: 2020-06-06T22:42:37.869Z
+Modified: 2020-06-07T08:19:54.733Z
 */
 
 'use strict';
@@ -11,6 +11,7 @@ Modified: 2020-06-06T22:42:37.869Z
 const BaseApi = require('./BaseApi')
 const Database = require('../database/Database');
 const Langs = require('i18n');
+const Roles = require('roles');
 
 /**
  * The main hub for interating with the API, and the starting point for any database and much.
@@ -50,6 +51,21 @@ class Api extends BaseApi {
 		 */
 
 		this.langs = Langs;
+
+		Roles.addApplication("api", [ "MainDeveloper", "Developer", "Admin", "BetaPlayer", "Player", "NonPlayer" ]);
+		Roles.addProfile("MainDeveloper", [ "api.*" ])
+		Roles.addProfile("Developer", [ "api.Developer", "api.Admin", "api.BetaPlayer", "api.Player", "api.NonPlayer" ]);
+		Roles.addProfile("Admin", [ "api.Admin", "api.BetaPlayer", "api.Player" ]);
+		Roles.addProfile("BetaPlayer", [ "api.BetaPlayer", "api.Player" ])
+		Roles.addProfile("Player", [ "api.Player" ]);
+		Roles.addProfile("NonPlayer", [ "api.NonPlayer" ]);
+
+		/**
+		 * Initiate a instance of permissions.
+		 * @type {Roles}
+		 */
+
+		this.roles = Roles;
 	}
 
 	/**

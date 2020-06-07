@@ -2,7 +2,7 @@
 Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 (c) 2020 TheMorFun
 Created:  2020-06-04T12:25:53.305Z
-Modified: 2020-06-07T07:40:11.711Z
+Modified: 2020-06-07T08:18:55.404Z
 */
 
 declare module '@hugovidafe/useful-api' {
@@ -22,7 +22,7 @@ declare module '@hugovidafe/useful-api' {
         constructor(options?: ApiOptions);
 
         public database: Database;
-        public langs = i18n;
+        public langs: i18nAPI;
     }
 
     export const Constants: {
