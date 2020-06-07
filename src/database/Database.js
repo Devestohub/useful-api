@@ -3,7 +3,7 @@ Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 USEFUL API (c) 2020
 Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
 Created: 2020-06-05T19:36:13.930Z
-Modified: 2020-06-06T23:07:46.138Z
+Modified: 2020-06-07T07:22:01.201Z
 */
 
 'use strict';
@@ -96,7 +96,7 @@ class Database {
     encrypt(algorithm, pass) {
 		try {
 			const crypt = new Crypt(algorithm, pass)
-			const data = fs.readFileSync(this.api.options.file)
+			const data = fs.readFileSync(this.api.options.file_db)
 			return crypt.encrypt(data)
 		} catch (err) {
 			console.error(err)
@@ -109,7 +109,7 @@ class Database {
      * @param {password} pass The password you used in encryption.
      * @returns {object}
      */
-    
+
     decrypt(algorithm, pass, encrypted) {
         try {
 			const crypt = new Crypt(algorithm, pass)

@@ -3,7 +3,7 @@ Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 USEFUL API (c) 2020
 Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
 Created: 2020-06-05T09:40:19.887Z
-Modified: 2020-06-06T23:17:40.446Z
+Modified: 2020-06-07T07:19:35.491Z
 */
 
 'use strict';
@@ -46,13 +46,9 @@ class Util {
             const element = obj[prop];
             const elemIsObj = isObject(element);
             const valueOf = elemIsObj && typeof element.valueOf === 'function' ? element.valueOf() : null;
-        
-            // If it's a Collection, make the array of keys
-            if (element instanceof require('./Collection')) out[newProp] = Array.from(element.keys());
-            // If the valueOf is a Collection, use its array of keys
-            else if (valueOf instanceof require('./Collection')) out[newProp] = Array.from(valueOf.keys());
+
             // If it's an array, flatten each element
-            else if (Array.isArray(element)) out[newProp] = element.map(e => Util.flatten(e));
+            if (Array.isArray(element)) out[newProp] = element.map(e => Util.flatten(e));
             // If it's an object with a primitive `valueOf`, use that value
             else if (typeof valueOf !== 'object') out[newProp] = valueOf;
             // If it's a primitive
