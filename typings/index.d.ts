@@ -2,7 +2,7 @@
 Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 (c) 2020 TheMorFun
 Created:  2020-06-04T12:25:53.305Z
-Modified: 2020-06-07T07:33:11.984Z
+Modified: 2020-06-07T07:40:11.711Z
 */
 
 declare module '@hugovidafe/useful-api' {
@@ -50,11 +50,11 @@ declare module '@hugovidafe/useful-api' {
 
     export class Database {
         constructor(api: Api);
-        public static get(key: string | object): string | object | undefined;
-        public static set(key: string | object, value: any): any;
-        public static has(key: string | object): boolean;
-        public static unset(key: string | object): boolean;
-        public static clone(): any;
+        public get(key: string | object): string | object | undefined;
+        public set(key: string | object, value: any): any;
+        public has(key: string | object): boolean;
+        public unset(key: string | object): boolean;
+        public clone(): any;
         public encrypt(algorithm: Algorithm, pass: string): string;
         public decrypt(algorithm: Algorithm, pass: string, encrypted: string): object | any;
     }
