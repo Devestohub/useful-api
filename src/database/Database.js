@@ -3,7 +3,7 @@ Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 USEFUL API (c) 2020
 Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
 Created: 2020-06-05T19:36:13.930Z
-Modified: 2020-06-07T07:22:01.201Z
+Modified: 29/6/2020 1:10:22
 */
 
 'use strict';
@@ -18,7 +18,7 @@ const Crypt = require('@hugovidafe/crypt');
  * @abstract
  */
 
-class Database {
+class BaseDatabase {
     constructor(api) {
         /**
          * @type {Api}
@@ -120,4 +120,4 @@ class Database {
     }
 }
 
-module.exports = Database;
+module.exports = BaseDatabase;

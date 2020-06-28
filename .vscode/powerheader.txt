@@ -1,0 +1,1 @@
+Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>\n$WORKSPACE_NAME (c) $CURRENT_YEAR\nCreated: !createddate!\nModified: 24/6/2020 11:27:6

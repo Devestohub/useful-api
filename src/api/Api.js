@@ -3,14 +3,14 @@ Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 USEFUL API (c) 2020
 Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
 Created: 2020-06-05T09:40:19.887Z
-Modified: 2020-06-07T09:04:34.221Z
+Modified: 29/6/2020 1:19:49
 */
 
 'use strict';
 
 const BaseApi = require('./BaseApi')
-const Database = require('../database/Database');
-const Langs = require('i18n');
+const Database = require('../database');
+const Langs = require('../langs')
 const Roles = require('roles');
 
 /**
@@ -38,19 +38,12 @@ class Api extends BaseApi {
 
 		this.database = new Database(this);
 
-		Langs.configure({
-            directory: this.options.path_langs,
-            syncFiles: true,
-            updateFiles: true,
-            autoReload: true
-		})
-
 		/**
 		 * Initiate a instance of translations.
 		 * @type {Langs}
 		 */
 
-		this.langs = Langs;
+		this.langs = new Langs(this);
 
 		Roles.import({ applications: { api: [ 'MainDeveloper', 'Developer', 'Admin', 'BetaPlayer', 'Player', 'NonPlayer' ] }, profiles: {  MainDeveloper: [ 'api.MainDeveloper', 'api.Developer', 'api.Admin', 'api.BetaPlayer', 'api.Player', 'api.NonPlayer'  ],  Developer: [ 'api.Developer', 'api.Admin', 'api.BetaPlayer', 'api.Player', 'api.NonPlayer'  ],  Admin: [ 'api.Admin', 'api.BetaPlayer', 'api.Player' ],  BetaPlayer: [ 'api.BetaPlayer', 'api.Player' ],  Player: [ 'api.Player' ],  NonPlayer: [ 'api.NonPlayer' ] } });
 

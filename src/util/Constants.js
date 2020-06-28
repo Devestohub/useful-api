@@ -3,7 +3,7 @@ Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
 USEFUL API (c) 2020
 Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
 Created: 2020-06-05T09:40:19.887Z
-Modified: 2020-06-06T21:22:47.597Z
+Modified: 2020-06-07T13:37:19.477Z
 */
 
 'use strict';
@@ -16,6 +16,6 @@ Modified: 2020-06-06T21:22:47.597Z
  */
 
 exports.DefaultOptions = {
-    file_db: './database.json',
-    path_langs: './i18n'
+    file_db: null,
+    path_langs: null
 }
