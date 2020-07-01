@@ -1,10 +1,7 @@
-/*
-Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
-USEFUL API (c) 2020
-Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
-Created: 2020-06-05T09:40:19.887Z
-Modified: 29/6/2020 1:19:49
-*/
+// Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
+// Useful Api (c) 2020
+// Created: 1/7/2020 12:48:37
+// Modified: 1/7/2020 12:48:38
 
 'use strict';
 
@@ -45,7 +42,7 @@ class Api extends BaseApi {
 
 		this.langs = new Langs(this);
 
-		Roles.import({ applications: { api: [ 'MainDeveloper', 'Developer', 'Admin', 'BetaPlayer', 'Player', 'NonPlayer' ] }, profiles: {  MainDeveloper: [ 'api.MainDeveloper', 'api.Developer', 'api.Admin', 'api.BetaPlayer', 'api.Player', 'api.NonPlayer'  ],  Developer: [ 'api.Developer', 'api.Admin', 'api.BetaPlayer', 'api.Player', 'api.NonPlayer'  ],  Admin: [ 'api.Admin', 'api.BetaPlayer', 'api.Player' ],  BetaPlayer: [ 'api.BetaPlayer', 'api.Player' ],  Player: [ 'api.Player' ],  NonPlayer: [ 'api.NonPlayer' ] } });
+		Roles.import(this.options.roles);
 
 		/**
 		 * Initiate a instance of permissions.
@@ -62,6 +59,9 @@ class Api extends BaseApi {
 	 */
 
 	_validateOptions(options = this.options) {
+		if (options.roles && !(typeof options.roles === "object")) {
+			throw new Error('This option must be an object');
+		}
 		if (options.file_db && !(typeof options.file_db === "string")) {
 			throw new Error('This option must be a string');
 		}

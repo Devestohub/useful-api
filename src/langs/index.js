@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
-// API (c) 2020
-// Created: 29/6/2020 1:15:12
-// Modified: 29/6/2020 1:42:33
+// Useful Api (c) 2020
+// Created: 1/7/2020 12:50:1
+// Modified: 1/7/2020 12:50:3
 
 const i18n = require('i18n')
 

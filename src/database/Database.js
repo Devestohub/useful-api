@@ -1,10 +1,7 @@
-/*
-Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
-USEFUL API (c) 2020
-Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
-Created: 2020-06-05T19:36:13.930Z
-Modified: 29/6/2020 1:10:22
-*/
+// Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
+// Useful Api (c) 2020
+// Created: 1/7/2020 12:49:25
+// Modified: 1/7/2020 12:49:26
 
 'use strict';
 

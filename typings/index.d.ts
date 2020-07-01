@@ -1,9 +1,7 @@
-/*
-Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
-(c) 2020 TheMorFun
-Created:  2020-06-04T12:25:53.305Z
-Modified: 2020-06-07T09:02:38.739Z
-*/
+// Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
+// Useful Api (c) 2020
+// Created: 1/7/2020 12:48:14
+// Modified: 1/7/2020 12:48:19
 
 declare module '@hugovidafe/useful-api' {
 
@@ -24,6 +22,7 @@ declare module '@hugovidafe/useful-api' {
 
         public database: Database;
         public langs: i18nAPI;
+        public roles: Roles;
     }
 
     export const Constants: {
@@ -60,6 +59,17 @@ declare module '@hugovidafe/useful-api' {
         public decrypt(algorithm: Algorithm, pass: string, encrypted: string): object | any;
     }
 
+    export class Roles {
+        public addApplication(name: string, roles: object): void;
+        public addProfile(name: string, roles: object): void;
+        public getApplication(name: string): object;
+        public getProfile(name: string): object;
+        public import(data: object): void;
+        public export(): object;
+        public getMonitor(): any;
+        public setSeparator(sep: string): Roles;
+    }
+
     export class Util {
         public static flatten(obj: object, ...props: { [key: string]: boolean | string }[]): object;
         public static mergeDefault(def: object, given: object): object;
@@ -72,6 +82,7 @@ declare module '@hugovidafe/useful-api' {
     interface ApiOptions {
         file_db?: PathLike;
         path_langs?: PathLike;
+        roles?: object;
     }
 
     //#endregion

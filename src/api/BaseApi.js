@@ -1,10 +1,7 @@
-/*
-Author: Hugovidafe (Hugo.vidal.ferre@gmail.com)
-USEFUL API (c) 2020
-Desc: THIS PACKAGE IS UNDER DEVELOPMENT!
-Created: 2020-06-05T09:40:19.887Z
-Modified: 2020-06-06T22:43:39.861Z
-*/
+// Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
+// Useful Api (c) 2020
+// Created: 1/7/2020 12:49:49
+// Modified: 1/7/2020 12:49:50
 
 const { DefaultOptions } = require('../util/Constants');
 const Util = require('../util/Util');

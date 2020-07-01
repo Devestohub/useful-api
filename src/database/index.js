@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
-// API (c) 2020
-// Created: 29/6/2020 1:11:16
-// Modified: 30/6/2020 16:45:44
+// Useful Api (c) 2020
+// Created: 1/7/2020 12:49:38
+// Modified: 1/7/2020 12:49:39
 
 const BaseDatabase = require("./Database");
 
