@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:49:25
-// Modified: 3/7/2020 1:22:45
+// Modified: 3/7/2020 1:39:30
 
 'use strict';
 
@@ -57,8 +57,9 @@ class BaseDatabase {
      * @returns {string | object} the value you entered
      */
 
-    set(key, value) {
-        return this.database.set(key, value).write().value();
+    async set(key, value) {
+        await this.database.set(key, value).write();
+        return this.database.get(key).value();
     }
 
     /**
@@ -90,7 +91,8 @@ class BaseDatabase {
      */
 
     add(key, value) {
-        return Array.isArray(this.get(key))? this.database.get(key).push(value).write().value(): this.set(key, [value]);
+        Array.isArray(this.get(key))? this.database.get(key).push(value).write(): this.set(key, [value]);
+        return this.database.get(value).value();
     }
 
     /**
