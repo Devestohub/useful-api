@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:49:25
-// Modified: 2/7/2020 19:1:10
+// Modified: 3/7/2020 1:22:45
 
 'use strict';
 
@@ -22,12 +22,12 @@ class BaseDatabase {
          * @private
          * @readonly
          */
-        this.file = file ? file : this.noFile;
+        this.file = file? file: this.noFile;
 
         /**
          * @private
          */
-        this.database = file ? low(new FileSync(this.file)) : false;
+        this.database = file? low(new FileSync(this.file)): false;
     }
 
     /**
@@ -47,18 +47,18 @@ class BaseDatabase {
      */
     
     get(key) {
-        return this.has(key) ? this.database.get(key).value() : undefined;
+        return this.has(key)? this.database.get(key).value(): undefined;
     }
 
     /**
      * Sets a new element in the database with the specified key and value.
      * @param {string} key - The key of the element to add.
-     * @param {*} value - The value of the element to add.
-     * @returns {void}
+     * @param {string | object} value - The value of the element to add.
+     * @returns {string | object} the value you entered
      */
 
     set(key, value) {
-        return this.database.set(key, value).write();
+        return this.database.set(key, value).write().value();
     }
 
     /**
@@ -79,18 +79,18 @@ class BaseDatabase {
      */
 
     unset(key) {
-        return this.has(key) ? this.database.unset(key).write() : false;
+        return this.has(key)? this.database.unset(key).write(): false;
     }
 
     /**
      * Add an element in the database with the specified key and value.
      * @param {string} key - The key of the element to push.
-     * @param {*} value - The value of the element to push.
-     * @returns {void}
+     * @param {string | object} value - The value of the element to push.
+     * @returns {string | object} the value you entered
      */
 
     add(key, value) {
-        return Array.isArray(this.get(key)) ? this.database.get(key).push(value).write() : this.set(key, [value]);
+        return Array.isArray(this.get(key))? this.database.get(key).push(value).write().value(): this.set(key, [value]);
     }
 
     /**
