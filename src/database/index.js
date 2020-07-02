@@ -1,16 +1,28 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:49:38
-// Modified: 1/7/2020 12:49:39
+// Modified: 2/7/2020 18:50:16
 
 const BaseDatabase = require("./Database");
 
+/**
+ * The main hub for interating with the Database.
+ * @extends {BaseDatabase}
+ * 
+ * @author Created by Hugovidafe <hugo.vidal.ferre@gmail.com>
+ * @github https://github.com/Hugovidafe/useful-api 
+ * @license http://opensource.org/licenses/MIT
+ */
+
 class Database extends BaseDatabase {
-    constructor(api) {
-        if (!api) throw new Error("You need to specify a file to use as database.")
-        if (!api.options) throw new Error("You need to specify a file to use as database.")
-        if (!api.options.file_db) throw new Error("You need to specify a file to use as database.")
-        super(api);
+    /**
+	 * @param {ApiOptions} [api] API.
+     * @param {PathLike} [file_db] File of the database.
+	 */
+    constructor({ api, file_db }) {
+        if (api.options.file_db) return super(api.options.file_db)
+        if (file_db) return super(file_db)
+        super();
     }
 }
 

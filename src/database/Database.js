@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:49:25
-// Modified: 1/7/2020 12:49:26
+// Modified: 2/7/2020 19:1:10
 
 'use strict';
 
@@ -16,23 +16,32 @@ const Crypt = require('@hugovidafe/crypt');
  */
 
 class BaseDatabase {
-    constructor(api) {
+    constructor(file) {
         /**
          * @type {Api}
          * @private
          * @readonly
          */
-        this.api = api;
+        this.file = file ? file : this.noFile;
 
         /**
          * @private
          */
-        this.database = low(new FileSync(this.api.options.file_db))
+        this.database = file ? low(new FileSync(this.file)) : false;
+    }
+
+    /**
+     * @readonly
+     * @private
+    */
+
+    get noFile() {
+        console.log("If you need a database, you need to specify a file to use as database.");
     }
 
     /**
      * Gets an element with the specified key, and returns its value, or `undefined` if the element does not exist.
-     * @param {*} key - The key to get from this database.
+     * @param {string} key - The key to get from this database.
      * @returns {* | undefined} `undefined` if the element does not exist.
      * @readonly
      */
@@ -43,7 +52,7 @@ class BaseDatabase {
 
     /**
      * Sets a new element in the database with the specified key and value.
-     * @param {*} key - The key of the element to add.
+     * @param {string} key - The key of the element to add.
      * @param {*} value - The value of the element to add.
      * @returns {void}
      */
@@ -54,7 +63,7 @@ class BaseDatabase {
 
     /**
      * Checks if an element exists in the database.
-     * @param {*} key - The key of the element to check for.
+     * @param {string} key - The key of the element to check for.
      * @returns {boolean} `true` if the element exists, `false` if it does not exist.
      * @readonly
      */
@@ -65,12 +74,23 @@ class BaseDatabase {
 
     /**
      * Deletes an element from the database.
-     * @param {*} key - The key to delete from the database.
+     * @param {string} key - The key to delete from the database.
      * @returns {boolean} `true` if the element was removed, `false` if the element does not exist.
      */
 
     unset(key) {
-        return this.has(key) ? this.database.unset(key).write() : false
+        return this.has(key) ? this.database.unset(key).write() : false;
+    }
+
+    /**
+     * Add an element in the database with the specified key and value.
+     * @param {string} key - The key of the element to push.
+     * @param {*} value - The value of the element to push.
+     * @returns {void}
+     */
+
+    add(key, value) {
+        return Array.isArray(this.get(key)) ? this.database.get(key).push(value).write() : this.set(key, [value]);
     }
 
     /**
@@ -79,7 +99,7 @@ class BaseDatabase {
      * @readonly
      */
 
-    clone() {
+    get clone() {
         return this.database.clone().value();
     }
 
@@ -93,7 +113,7 @@ class BaseDatabase {
     encrypt(algorithm, pass) {
 		try {
 			const crypt = new Crypt(algorithm, pass)
-			const data = fs.readFileSync(this.api.options.file_db)
+			const data = fs.readFileSync(this.file)
 			return crypt.encrypt(data)
 		} catch (err) {
 			console.error(err)

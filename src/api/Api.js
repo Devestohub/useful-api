@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:48:37
-// Modified: 1/7/2020 12:48:38
+// Modified: 2/7/2020 19:2:46
 
 'use strict';
 
@@ -24,7 +24,7 @@ class Api extends BaseApi {
 	 * @param {ApiOptions} [options] Options for the API.
 	 */
 	constructor(options = {}) {
-		super(Object.assign({ _apiVersion: "1" }, options));
+		super(Object.assign({ _apiVersion: "2" }, options));
 
 		this._validateOptions();
 
@@ -33,14 +33,14 @@ class Api extends BaseApi {
 		 * @type {Database}
 		 */
 
-		this.database = new Database(this);
+		this.database = new Database({ api: this });
 
 		/**
 		 * Initiate a instance of translations.
 		 * @type {Langs}
 		 */
 
-		this.langs = new Langs(this);
+		this.langs = new Langs({ api: this });
 
 		Roles.import(this.options.roles);
 

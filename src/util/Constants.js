@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:48:4
-// Modified: 1/7/2020 12:48:6
+// Modified: 2/7/2020 19:45:58
 
 'use strict';
 
@@ -16,5 +16,5 @@
 exports.DefaultOptions = {
     file_db: null,
     path_langs: null,
-    roles: { applications: { api: [ 'MainDeveloper', 'Developer', 'Admin', 'BetaPlayer', 'Player', 'NonPlayer' ] }, profiles: {  MainDeveloper: [ 'api.MainDeveloper', 'api.Developer', 'api.Admin', 'api.BetaPlayer', 'api.Player', 'api.NonPlayer'  ],  Developer: [ 'api.Developer', 'api.Admin', 'api.BetaPlayer', 'api.Player', 'api.NonPlayer'  ],  Admin: [ 'api.Admin', 'api.BetaPlayer', 'api.Player' ],  BetaPlayer: [ 'api.BetaPlayer', 'api.Player' ],  Player: [ 'api.Player' ],  NonPlayer: [ 'api.NonPlayer' ] } }
+    roles: { applications: { api: [ 'Developer', 'Admin', 'User' ] }, profiles: { Developer: [ 'api.*' ], Admin: [ 'api.Admin', 'api.User' ], User: [ 'api.User' ] } }
 }

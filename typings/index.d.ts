@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:48:14
-// Modified: 1/7/2020 12:48:19
+// Modified: 2/7/2020 19:8:35
 
 declare module '@hugovidafe/useful-api' {
 
@@ -21,7 +21,7 @@ declare module '@hugovidafe/useful-api' {
         private _validateOptions(options?: ApiOptions): void;
 
         public database: Database;
-        public langs: i18nAPI;
+        public langs: Langs;
         public roles: Roles;
     }
 
@@ -49,14 +49,19 @@ declare module '@hugovidafe/useful-api' {
     }
 
     export class Database {
-        constructor(api: Api);
+        constructor(file: PathLike);
         public get(key: string | object): string | object | undefined;
-        public set(key: string | object, value: any): any;
+        public set(key: string | object, value: any): void;
         public has(key: string | object): boolean;
         public unset(key: string | object): boolean;
-        public clone(): any;
+        public add(key: string, value: any): void;
+        public get clone(): object;
         public encrypt(algorithm: Algorithm, pass: string): string;
         public decrypt(algorithm: Algorithm, pass: string, encrypted: string): object | any;
+    }
+
+    export class Langs extends i18nAPI {
+        constructor(file: PathLike);
     }
 
     export class Roles {
@@ -65,8 +70,8 @@ declare module '@hugovidafe/useful-api' {
         public getApplication(name: string): object;
         public getProfile(name: string): object;
         public import(data: object): void;
-        public export(): object;
-        public getMonitor(): any;
+        public get export(): object;
+        public get getMonitor(): any;
         public setSeparator(sep: string): Roles;
     }
 
