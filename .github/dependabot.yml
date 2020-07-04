@@ -9,8 +9,8 @@ updates:
   open-pull-requests-limit: 10
   versioning-strategy: increase
   commit-message:
-    prefix: "Dependencies update"
-    prefix-development: "Development dependencies update"
+    prefix: "Dep update"
+    prefix-development: "Dev dep update"
   labels:
     - "npm"
     - "dependencies"
