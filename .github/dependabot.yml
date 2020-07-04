@@ -2,7 +2,15 @@ version: 2
 updates:
 - package-ecosystem: npm
   directory: "/"
+  target-branch: "dev"
   schedule:
     interval: daily
-    time: "11:00"
+    timezone: "Europe/Madrid"
   open-pull-requests-limit: 10
+  versioning-strategy: increase
+  commit-message:
+    prefix: "Dependencies update"
+    prefix-development: "Development dependencies update"
+  labels:
+    - "npm"
+    - "dependencies"

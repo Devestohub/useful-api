@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:48:14
-// Modified: 3/7/2020 1:22:50
+// Modified: 4/7/2020 13:34:18
 
 declare module '@hugovidafe/useful-api' {
 
@@ -56,7 +56,7 @@ declare module '@hugovidafe/useful-api' {
         public unset(key: string): boolean;
         public add(key: string, value: string | object): string | object;
         public get clone(): object;
-        public encrypt(algorithm: Algorithm, pass: string): string;
+        public encrypt(algorithm: Algorithm, pass: string): string | any;
         public decrypt(algorithm: Algorithm, pass: string, encrypted: string): object | any;
     }
 
