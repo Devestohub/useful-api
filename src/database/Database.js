@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:49:25
-// Modified: 3/7/2020 1:39:30
+// Modified: 4/7/2020 13:33:20
 
 'use strict';
 
@@ -45,7 +45,7 @@ class BaseDatabase {
      * @returns {* | undefined} `undefined` if the element does not exist.
      * @readonly
      */
-    
+
     get(key) {
         return this.has(key)? this.database.get(key).value(): undefined;
     }
@@ -59,7 +59,7 @@ class BaseDatabase {
 
     async set(key, value) {
         await this.database.set(key, value).write();
-        return this.database.get(key).value();
+        return this.get(key);
     }
 
     /**
@@ -70,7 +70,7 @@ class BaseDatabase {
      */
 
     has(key) {
-        return this.database.has(key).value();
+        return this.database.has(key)? true: false;
     }
 
     /**
@@ -107,9 +107,9 @@ class BaseDatabase {
 
     /**
      * Encrypts the database.
-     * @param {string} algorithm The algorithm to use for encryptation.
-     * @param {password} pass The password to use for encryptation.
-     * @returns {string}
+     * @param {string} algorithm - The algorithm to use for encryptation.
+     * @param {password} pass - The password to use for encryptation.
+     * @returns {string | *} the database encryoted or `err` on case of error
      */
 
     encrypt(algorithm, pass) {
@@ -118,15 +118,15 @@ class BaseDatabase {
 			const data = fs.readFileSync(this.file)
 			return crypt.encrypt(data)
 		} catch (err) {
-			console.error(err)
+			return err;
 		}
     }
 
     /**
      * Decrypt the database.
-     * @param {string} algorithm The algorithm you used in encryption.
-     * @param {password} pass The password you used in encryption.
-     * @returns {object}
+     * @param {string} algorithm - The algorithm you used in encryption.
+     * @param {password} pass - The password you used in encryption.
+     * @returns {object | *} the object that was encrypted or `err` on case of error
      */
 
     decrypt(algorithm, pass, encrypted) {
@@ -134,7 +134,7 @@ class BaseDatabase {
 			const crypt = new Crypt(algorithm, pass)
 			return crypt.decrypt(encrypted)
 		} catch (err) {
-			console.error(err)
+			return err;
 		}
     }
 }
