@@ -1,34 +1,34 @@
 pull_request_rules:
-	- name: Automatic merge on approval
-		conditions:
-			- "#approved-reviews-by>=1"
-		actions:
-			backport:
-				branches:
-					- dev
-			merge:
-				method: merge
-	- name: Merge non-breaking dependencies automatically
-		conditions:
-			- author~=^dependabot(|-preview)\[bot\]$
-			- title~=from (?P<major>\d+).\d+.\d+ to (?P=major).\d+.\d+
-		actions:
-			backport:
-				branches:
-					- dev
-			merge:
-				method: merge
-	- name: Notify breaking dependencies automatically
-		conditions:
-			- author~=^dependabot(|-preview)\[bot\]$
-			- title~=from (?P<major>\d+).\d+.\d+ to (?!(?P=major).\d+.\d+)
-		actions:
-			comment:
-				message: |
-					This PR features a major change and requires further approval.
-			backport:
-				branches:
-					- dev
-			request_reviews:
-				users:
-					- Hugovidafe
+  - name: Automatic merge on approval
+    conditions:
+      - "#approved-reviews-by>=1"
+    actions:
+      backport:
+        branches:
+          - dev
+      merge:
+        method: merge
+  - name: Merge non-breaking dependencies automatically
+    conditions:
+      - author~=^dependabot(|-preview)\[bot\]$
+      - title~=from (?P<major>\d+).\d+.\d+ to (?P=major).\d+.\d+
+    actions:
+      backport:
+        branches:
+          - dev
+      merge:
+        method: merge
+  - name: Notify breaking dependencies automatically
+    conditions:
+      - author~=^dependabot(|-preview)\[bot\]$
+      - title~=from (?P<major>\d+).\d+.\d+ to (?!(?P=major).\d+.\d+)
+    actions:
+      comment:
+        message: |
+          This PR features a major change and requires further approval.
+      backport:
+        branches:
+          - dev
+      request_reviews:
+        users:
+          - Hugovidafe
