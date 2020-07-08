@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:49:25
-// Modified: 4/7/2020 13:33:20
+// Modified: 8/7/2020 13:54:39
 
 'use strict';
 
@@ -70,7 +70,7 @@ class BaseDatabase {
      */
 
     has(key) {
-        return this.database.has(key)? true: false;
+        return this.database.has(key).value()? true: false;
     }
 
     /**
