@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:48:37
-// Modified: 2/7/2020 19:2:46
+// Modified: 9/7/2020 19:44:55
 
 'use strict';
 
@@ -15,7 +15,7 @@ const Roles = require('roles');
  * @extends {BaseApi}
  * 
  * @author Created by Hugovidafe <hugo.vidal.ferre@gmail.com>
- * @github https://github.com/Hugovidafe/useful-api 
+ * @github https://github.com/Hugovidafe/useful-api
  * @license http://opensource.org/licenses/MIT
  */
 
@@ -33,23 +33,23 @@ class Api extends BaseApi {
 		 * @type {Database}
 		 */
 
-		this.database = new Database({ api: this });
+		this.database = this.options.file_db? new Database({ file: this.options.file_db }): null;
 
 		/**
 		 * Initiate a instance of translations.
 		 * @type {Langs}
 		 */
 
-		this.langs = new Langs({ api: this });
+		this.langs = this.options.path_langs? new Langs({ path: this.options.path_langs }): null;
 
-		Roles.import(this.options.roles);
+		this.options.roles? Roles.import(this.options.roles): null;
 
 		/**
 		 * Initiate a instance of permissions.
 		 * @type {Roles}
 		 */
 
-		this.roles = Roles;
+		this.roles = this.options.roles? Roles: null;
 	}
 
 	/**

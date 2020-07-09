@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:48:14
-// Modified: 4/7/2020 13:34:18
+// Modified: 9/7/2020 19:44:22
 
 declare module '@hugovidafe/useful-api' {
 
@@ -12,10 +12,10 @@ declare module '@hugovidafe/useful-api' {
     //#region Classes
     export class BaseApi {
         constructor(options?: ApiOptions);
-        
+
         public options: ApiOptions;
     }
-    
+
     export class Api extends BaseApi {
         constructor(options?: ApiOptions);
         private _validateOptions(options?: ApiOptions): void;
@@ -61,7 +61,7 @@ declare module '@hugovidafe/useful-api' {
     }
 
     export class Langs extends i18nAPI {
-        constructor(file: PathLike);
+        constructor(path: PathLike);
     }
 
     export class Roles {
