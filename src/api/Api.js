@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:48:37
-// Modified: 9/7/2020 19:44:55
+// Modified: 9/7/2020 19:57:1
 
 'use strict';
 
@@ -33,14 +33,14 @@ class Api extends BaseApi {
 		 * @type {Database}
 		 */
 
-		this.database = this.options.file_db? new Database({ file: this.options.file_db }): null;
+		this.database = this.options.file_db? new Database(this.options.file_db): null;
 
 		/**
 		 * Initiate a instance of translations.
 		 * @type {Langs}
 		 */
 
-		this.langs = this.options.path_langs? new Langs({ path: this.options.path_langs }): null;
+		this.langs = this.options.path_langs? new Langs(this.options.path_langs): null;
 
 		this.options.roles? Roles.import(this.options.roles): null;
 

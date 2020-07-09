@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:49:38
-// Modified: 9/7/2020 19:43:7
+// Modified: 9/7/2020 19:58:14
 
 const BaseDatabase = require("./Database");
 
@@ -19,7 +19,8 @@ class Database extends BaseDatabase {
      * @param {PathLike} [file] File of the database.
 	 */
     constructor(file) {
-        if (file) return super(file)
+        if (!file) return;
+        super(file)
     }
 }
 

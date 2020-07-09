@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:50:1
-// Modified: 9/7/2020 19:44:37
+// Modified: 9/7/2020 19:57:52
 
 const i18n = require('i18n')
 
@@ -17,6 +17,7 @@ const i18n = require('i18n')
  */
 
 function Langs(path) {
+    if (!path) return;
     i18n.configure({
         autoReload: true,
         directory: path,
