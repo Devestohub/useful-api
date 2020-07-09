@@ -1,7 +1,7 @@
 {
   "name": "@hugovidafe/useful-api",
   "description": "THIS PACKAGE IS UNDER DEVELOPMENT!",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "main": "src/index.js",
   "author": "Hugovidafe",
   "license": "MIT",
