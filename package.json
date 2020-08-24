@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Hugovidafe/useful-api#readme",
   "devDependencies": {
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.2"
   },
   "types": "typings/index.d.ts"
 }
