@@ -5,70 +5,74 @@
 
 'use strict';
 
-const BaseApi = require('./BaseApi')
+const BaseApi = require('./BaseApi');
 const Database = require('../database');
-const Langs = require('../langs')
+const Langs = require('../langs');
 const Roles = require('roles');
 
 /**
  * The main hub for interating with the API, and the starting point for any database and much.
  * @extends {BaseApi}
- * 
+ *
  * @author Created by Hugovidafe <hugo.vidal.ferre@gmail.com>
  * @github https://github.com/Hugovidafe/useful-api
  * @license http://opensource.org/licenses/MIT
  */
 
 class Api extends BaseApi {
-	/**
-	 * @param {ApiOptions} [options] Options for the API.
-	 */
-	constructor(options = {}) {
-		super(Object.assign({ _apiVersion: "2" }, options));
+  /**
+   * @param {ApiOptions} [options] Options for the API.
+   */
+  constructor(options = {}) {
+    super(Object.assign({ _apiVersion: '2' }, options));
 
-		this._validateOptions();
+    this._validateOptions();
 
-		/**
-		 * Initiate a instance of Database.
-		 * @type {Database}
-		 */
+    /**
+     * Initiate a instance of Database.
+     * @type {Database}
+     */
 
-		this.database = this.options.file_db? new Database(this.options.file_db): null;
+    this.database = this.options.file_db
+      ? new Database(this.options.file_db)
+      : null;
 
-		/**
-		 * Initiate a instance of translations.
-		 * @type {Langs}
-		 */
+    /**
+     * Initiate a instance of translations.
+     * @type {Langs}
+     */
 
-		this.langs = this.options.path_langs? new Langs(this.options.path_langs): null;
+    this.langs = this.options.path_langs
+      ? new Langs(this.options.path_langs)
+      : null;
 
-		this.options.roles? Roles.import(this.options.roles): null;
+    this.options.roles ? Roles.import(this.options.roles) : null;
 
-		/**
-		 * Initiate a instance of permissions.
-		 * @type {Roles}
-		 */
+    /**
+     * Initiate a instance of permissions.
+     * @type {Roles}
+     */
 
-		this.roles = this.options.roles? Roles: null;
-	}
+    this.roles = this.options.roles ? Roles : null;
+  }
 
-	/**
-	 * Validates the api options.
-	 * @param {ApiOptions} [options=this.options] Options to validate.
-	 * @private
-	 */
+  /**
+   * Validates the api options.
+   * @param {ApiOptions} [options=this.options] Options to validate.
+   * @private
+   */
 
-	_validateOptions(options = this.options) {
-		if (options.roles && !(typeof options.roles === "object")) {
-			throw new Error('This option must be an object');
-		}
-		if (options.file_db && !(typeof options.file_db === "string")) {
-			throw new Error('This option must be a string');
-		}
-		if (options.path_langs && !(typeof options.path_langs === "string")) {
-			throw new Error('This option must be a string');
-		}
-	}
+  _validateOptions(options = this.options) {
+    if (options.roles && !(typeof options.roles === 'object')) {
+      throw new Error('This option must be an object');
+    }
+    if (options.file_db && !(typeof options.file_db === 'string')) {
+      throw new Error('This option must be a string');
+    }
+    if (options.path_langs && !(typeof options.path_langs === 'string')) {
+      throw new Error('This option must be a string');
+    }
+  }
 }
 
 module.exports = Api;

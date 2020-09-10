@@ -8,15 +8,15 @@
 const Util = require('./util/Util');
 
 module.exports = {
-    // "Root" classes
-    Api: require('./api/Api'),
+  // "Root" classes
+  Api: require('./api/Api'),
 
-    // Functions
-    Database: require('./database'),
-    Langs: require('./langs'),
+  // Functions
+  Database: require('./database'),
+  Langs: require('./langs'),
 
-    // Utilities
-    Constants: require('./util/Constants'),
-    Util: Util,
-    version: require('../package.json').version,
-}
+  // Utilities
+  Constants: require('./util/Constants'),
+  Util: Util,
+  version: require('../package.json').version,
+};

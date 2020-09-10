@@ -1,4 +1,10 @@
 {
-    "npm.enableRunFromFolder": true,
-    "npm.enableScriptExplorer": true
+  "npm.enableRunFromFolder": true,
+  "npm.enableScriptExplorer": true,
+  "files.exclude": {
+    ".git": true,
+    ".github": true,
+    "node_modules": true,
+    ".vscode": true
+  }
 }
