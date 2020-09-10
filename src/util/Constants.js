@@ -14,7 +14,14 @@
  */
 
 exports.DefaultOptions = {
-    file_db: null,
-    path_langs: null,
-    roles: { applications: { api: [ 'Developer', 'Admin', 'User' ] }, profiles: { Developer: [ 'api.*' ], Admin: [ 'api.Admin', 'api.User' ], User: [ 'api.User' ] } }
-}
+  file_db: null,
+  path_langs: null,
+  roles: {
+    applications: { api: ['Developer', 'Admin', 'User'] },
+    profiles: {
+      Developer: ['api.*'],
+      Admin: ['api.Admin', 'api.User'],
+      User: ['api.User'],
+    },
+  },
+};

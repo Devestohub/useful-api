@@ -6,19 +6,17 @@
 const { DefaultOptions } = require('../util/Constants');
 const Util = require('../util/Util');
 
-
 /**
  * The base class for all APIs.
  */
 class BaseApi {
-    constructor(options = {}) {
-
-        /**
-         * The options the api was instantiated with
-         * @type {ApiOptions}
-         */
-        this.options = Util.mergeDefault(DefaultOptions, options);
-    }
+  constructor(options = {}) {
+    /**
+     * The options the api was instantiated with
+     * @type {ApiOptions}
+     */
+    this.options = Util.mergeDefault(DefaultOptions, options);
+  }
 }
 
 module.exports = BaseApi;

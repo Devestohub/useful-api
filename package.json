@@ -1,7 +1,7 @@
 {
   "name": "@hugovidafe/useful-api",
   "description": "THIS PACKAGE IS UNDER DEVELOPMENT!",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "main": "src/index.js",
   "author": "Hugovidafe",
   "license": "MIT",
@@ -12,6 +12,9 @@
     "lowdb": "^1.0.0",
     "roles": "0.0.4"
   },
+  "scripts": {
+    "start": "prettier --config ./.vscode/.prettierrc --write ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hugovidafe/useful-api.git"
@@ -21,6 +24,7 @@
   },
   "homepage": "https://github.com/Hugovidafe/useful-api#readme",
   "devDependencies": {
+    "prettier": "^2.1.1",
     "typescript": "^4.0.2"
   },
   "types": "typings/index.d.ts"
