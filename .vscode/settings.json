@@ -6,5 +6,6 @@
     ".github": true,
     "node_modules": true,
     ".vscode": true
-  }
+  },
+  "workspace.isHidden": true
 }
