@@ -2,6 +2,7 @@ pull_request_rules:
   - name: Automatic merge on Pull Request
     conditions:
       - author=Hugovidafe
+      - author=Devestoguy
     actions:
       merge:
         method: merge
@@ -10,9 +11,6 @@ pull_request_rules:
       - author~=^dependabot(|-preview)\[bot\]$
       - title~=from (?P<major>\d+).\d+.\d+ to (?P=major).\d+.\d+
     actions:
-      backport:
-        branches:
-          - dev
       merge:
         method: merge
       delete_head_branch:
@@ -24,10 +22,8 @@ pull_request_rules:
       comment:
         message: |
           This PR features a major change and requires further approval.
-      backport:
-        branches:
-          - dev
       request_reviews:
         users:
           - Hugovidafe
+          - Devestoguy
       delete_head_branch:

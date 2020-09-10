@@ -1,16 +1,16 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  target-branch: "dev"
-  schedule:
-    interval: daily
-    timezone: "Europe/Madrid"
-  open-pull-requests-limit: 10
-  versioning-strategy: increase
-  commit-message:
-    prefix: "Dep update"
-    prefix-development: "Dev dep update"
-  labels:
-    - "npm"
-    - "dependencies"
+  - package-ecosystem: npm
+    directory: '/'
+    target-branch: 'dev'
+    schedule:
+      interval: daily
+      timezone: 'Europe/Madrid'
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+    commit-message:
+      prefix: 'Dep update'
+      prefix-development: 'Dev dep update'
+    labels:
+      - 'npm'
+      - 'dependencies'
