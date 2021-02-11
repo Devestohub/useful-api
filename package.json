@@ -1,7 +1,7 @@
 {
   "name": "@devestohub/useful-api",
   "description": "THIS PACKAGE IS UNDER DEVELOPMENT!",
-  "version": "0.0.2",
+  "version": "0.6.8",
   "main": "src/index.js",
   "author": "Devestoguy",
   "license": "MIT",
