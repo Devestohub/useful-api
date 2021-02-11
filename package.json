@@ -1,9 +1,9 @@
 {
-  "name": "@devestohub/useful-api",
+  "name": "@hugovidafe/useful-api",
   "description": "THIS PACKAGE IS UNDER DEVELOPMENT!",
   "version": "0.6.8",
   "main": "src/index.js",
-  "author": "Devestoguy",
+  "author": "Hugovidafe",
   "license": "MIT",
   "dependencies": {
     "@hugovidafe/crypt": "^1.0.1",
@@ -12,20 +12,19 @@
     "roles": "0.0.4"
   },
   "scripts": {
-    "improve": "npm install && prettier --config ./.vscode/.prettierrc --write .",
-    "sync": "npm run improve && git add . && git commit -am \"New update!\" && git push"
+    "start": "prettier --config ./.vscode/.prettierrc --write ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Devestohub/useful-api.git"
+    "url": "git+https://github.com/Hugovidafe/useful-api.git"
   },
   "bugs": {
-    "url": "https://github.com/Devestohub/useful-api/issues"
+    "url": "https://github.com/Hugovidafe/useful-api/issues"
   },
-  "homepage": "https://github.com/Devestohub/useful-api#readme",
+  "homepage": "https://github.com/Hugovidafe/useful-api#readme",
   "devDependencies": {
-    "prettier": "^2.2.1",
-    "typescript": "^4.1.5"
+    "prettier": "^2.1.1",
+    "typescript": "^4.0.2"
   },
   "types": "typings/index.d.ts"
 }
