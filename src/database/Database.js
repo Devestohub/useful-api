@@ -1,7 +1,7 @@
 // Author: Hugovidafe <Hugo.vidal.ferre@gmail.com>
 // Useful Api (c) 2020
 // Created: 1/7/2020 12:49:25
-// Modified: 10/9/2020 10:22:7
+// Modified: 10/9/2020 10:55:19
 
 'use strict';
 
@@ -51,7 +51,7 @@ class BaseDatabase {
   get(key, callback) {
     try {
       if (this.has(key)) {
-        callback(null, this.database.get(key).value())
+        callback(null, this.database.get(key).value());
         return this.database.get(key).value();
       } else {
         callback(null, undefined);
@@ -73,7 +73,7 @@ class BaseDatabase {
     try {
       await this.database.set(key, value).write();
       if (this.has(key)) {
-        callback(null, this.get(key))
+        callback(null, this.get(key));
         return this.get(key);
       } else {
         callback(null, undefined);
@@ -114,8 +114,8 @@ class BaseDatabase {
   unset(key, callback) {
     if (this.has(key)) {
       try {
-        this.database.unset(key).write()
-        callback(null, true)
+        this.database.unset(key).write();
+        callback(null, true);
         return true;
       } catch (error) {
         return callback(error);
@@ -134,9 +134,9 @@ class BaseDatabase {
    */
 
   add(key, value) {
-    Array.isArray(this.get(key)) ?
-      this.database.get(key).push(value).write() :
-      this.set(key, [value]);
+    Array.isArray(this.get(key))
+      ? this.database.get(key).push(value).write()
+      : this.set(key, [value]);
     return this.database.get(value).value();
   }
 
